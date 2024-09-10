@@ -1,0 +1,35 @@
+#include <stdio.h>
+int main()
+{
+	int input_count[100] = { 0 };	// 입고 수량
+	int buy_count[100] = { 0 };		// 판매 수량
+	int save_count[100] = { 0 };	// 재고 수량
+
+	int N = 0;		// 상품의 종류
+	int ID = 0;		// 고유 아이디
+
+	printf("상품 개수(종류) 입력: ");
+	scanf("%d", &N);
+
+	printf("상품 별 입고수량 입력: ");
+	for (int i = 0; i < N; i++) {
+		scanf("%d", &input_count[i]);
+	}
+	printf("상품 별 판매수량 입력: ");
+	for (int i = 0; i < N; i++) {
+		scanf("%d", &buy_count[i]);
+	}
+	printf("ID 입력: ");
+	scanf("%d", &ID); // 지정된 아이디로 재고 확인
+	ID = ID - 1;
+	for (int i = 0; i < N; i++) {
+		save_count[i] = input_count[i] - buy_count[i];
+	}
+	printf("\n입력한 ID에 해당하는 제품의 재고 수량: ");
+	printf("%d\n", save_count[ID]);		//지정 된 재고 출력
+
+	printf("모든 상품의 재고 수량 출력: ");
+	for (int i = 0; i < N; i++) {
+		printf("%d ", save_count[i]); // 모든 재고 출력
+	}
+}
